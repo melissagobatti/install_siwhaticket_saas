@@ -22,7 +22,7 @@ backend_redis_create() {
   createdb ${instancia_add};
   psql
   CREATE USER ${instancia_add} SUPERUSER INHERIT CREATEDB CREATEROLE;
-  ALTER USER ${instancia_add} PASSWORD 'tn9xa0WL4cmMeTGMhz';
+  ALTER USER ${instancia_add} PASSWORD '${mysql_root_password}';
   \q
   exit
 EOF
