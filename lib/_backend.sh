@@ -8,18 +8,17 @@
 #######################################
 backend_redis_create() {
   print_banner
-  printf "${WHITE} 💻 Criando Redis & Banco Postgres...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Criando Banco Postgres...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
-
-  sudo su - postgres
-  createdb ${instancia_add};
-  psql
-  CREATE USER ${instancia_add} SUPERUSER INHERIT CREATEDB CREATEROLE;
-  ALTER USER ${instancia_add} PASSWORD '${mysql_root_password}';
-  \q
-  exit
+  sudo su - postgres <<EOF
+    createdb ${instancia_add};
+    psql
+    CREATE USER ${instancia_add} SUPERUSER INHERIT CREATEDB CREATEROLE;
+    ALTER USER ${instancia_add} PASSWORD '${mysql_root_password}';
+    \q
+    exit
 EOF
 
 sleep 2
