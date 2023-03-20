@@ -303,21 +303,14 @@ EOF
 #######################################
 system_docker_install() {
   print_banner
-  printf "${WHITE} 💻 Instalando docker...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Instalando redis...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
   sudo su - root <<EOF
-  apt install -y apt-transport-https \
-                 ca-certificates curl \
-                 software-properties-common
-
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-  
-  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-
-  apt install -y docker-ce
+    apt install redis-server -y
+    systemctl enable redis-server.service
 EOF
 
   sleep 2
